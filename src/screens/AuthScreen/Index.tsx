@@ -10,14 +10,15 @@ import CustomButton from "../../components/CustomButton";
 import SocialButton from "../../components/SocialButton";
 import Separator from "../../components/Separator/Separator";
 import colors from "../../themes/colors";
+import { useNavigation } from "@react-navigation/native";
 
 const Index = () => {
+  const navigation = useNavigation();
   return (
     <View style={styles.container}>
-      <Image
-        style={styles.image}
-        source={require("../../../assets/images/icon-back.png")}
-      />
+      <TouchableOpacity onPress={() => navigation.goBack()}>
+        <Image source={require("../../../assets/images/icon-back.png")} />
+      </TouchableOpacity>
       <View style={styles.contentContainer}>
         <Text style={styles.title}>Let's you in</Text>
 
