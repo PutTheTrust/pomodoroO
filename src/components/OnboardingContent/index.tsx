@@ -4,19 +4,15 @@ import OnboardingItem from "../OnboardingItem";
 import { useRef, useState } from "react";
 import CustomButton from "../CustomButton";
 import onboardingData from "../../constants/onboardingData";
+import { useNavigation } from "@react-navigation/native";
 
-const index = () => {
+function index() {
+  const navigation = useNavigation();
   const [active, setActive] = useState(0);
 
   const onViewableItemsChanged = ({ viewableItems }: any) => {
     setActive(viewableItems[0].item.id);
   };
-
-  // const swipe = () => {
-  //   if (active < 2) {
-  //     setActive(active + 1);
-  //   }
-  // };
 
   const viewabilityConfigCallbackPairs = useRef([{ onViewableItemsChanged }]);
   return (
@@ -41,15 +37,17 @@ const index = () => {
 
       <View style={styles.btnContainer}>
         <CustomButton
-          title={active === 2 ? "Get Started" : "Next"}
-          onClick={() => swipe()}
+          title="Get Started"
+          onClick={() => {
+            navigation.navigate("Auth");
+          }}
         />
       </View>
 
       <View style={{ marginTop: 40 }} />
     </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {
