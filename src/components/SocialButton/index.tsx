@@ -21,7 +21,7 @@ const index = ({ text, image, isSmall }: SocialButtonProps) => {
       onPress={() => {}}
     >
       <Image source={image} />
-      {!isSmall ? <Text style={styles.text}>Continue with {text}</Text> : null}
+      {!isSmall ? <Text style={styles.text}> {text}</Text> : null}
     </TouchableOpacity>
   );
 };

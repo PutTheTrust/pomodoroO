@@ -21,6 +21,7 @@ import CustomInput from "../../components/CustomInput";
 import EmailIcon from "../../../assets/images/icon-mail.png";
 import LockIcon from "../../../assets/images/icon-lock.png";
 import { useNavigation } from "@react-navigation/native";
+import strings from "../../constants/strings";
 
 const Index = () => {
   const navigation = useNavigation();
@@ -57,8 +58,8 @@ const Index = () => {
       </View>
 
       <FooterText
-        leadingText="Don't have an account?"
-        trailingTest="Sign up"
+        leadingText={strings.noAccount}
+        trailingTest={strings.signupOption}
         onPress={() => {
           navigation.navigate("Register" as never);
         }}

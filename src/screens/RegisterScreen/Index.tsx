@@ -14,6 +14,7 @@ import CustomInput from "../../components/CustomInput";
 import EmailIcon from "../../../assets/images/icon-mail.png";
 import LockIcon from "../../../assets/images/icon-lock.png";
 import { useNavigation } from "@react-navigation/native";
+import strings from "../../constants/strings";
 
 const Index = () => {
   const navigation = useNavigation();
@@ -50,8 +51,8 @@ const Index = () => {
       </View>
 
       <FooterText
-        leadingText="Already have an account?"
-        trailingTest="Sign in"
+        leadingText={strings.alreadyAccount}
+        trailingTest={strings.signinOption}
         onPress={() => {
           navigation.navigate("Login" as never);
         }}

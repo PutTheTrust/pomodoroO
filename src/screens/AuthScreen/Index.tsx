@@ -13,6 +13,7 @@ import colors from "../../themes/colors";
 import { useNavigation } from "@react-navigation/native";
 import BackButton from "../../components/BackButton";
 import FooterText from "../../components/FooterText";
+import strings from "../../constants/strings";
 
 const Index = () => {
   const navigation = useNavigation();
@@ -20,22 +21,22 @@ const Index = () => {
     <View style={styles.container}>
       <BackButton />
       <View style={styles.contentContainer}>
-        <Text style={styles.title}>Let's you in</Text>
+        <Text style={styles.title}>{strings.authTitle}</Text>
 
         <View style={styles.btnContainer}>
           <SocialButton
             image={require("../../../assets/images/icon-facebook.png")}
-            text={"Facebook"}
+            text={strings.facebookAuthText}
             isSmall={false}
           />
           <SocialButton
             image={require("../../../assets/images/icon-google.png")}
-            text={"Google"}
+            text={strings.googleAuthText}
             isSmall={false}
           />
           <SocialButton
             image={require("../../../assets/images/icon-apple.png")}
-            text={"Apple"}
+            text={strings.appleAuthText}
             isSmall={false}
           />
         </View>
@@ -44,7 +45,7 @@ const Index = () => {
 
         <View>
           <CustomButton
-            title="Sign in with password"
+            title={strings.signinWithP}
             onClick={() => {
               navigation.navigate("Login" as never);
             }}
@@ -53,8 +54,8 @@ const Index = () => {
       </View>
 
       <FooterText
-        leadingText="Don't have an account?"
-        trailingTest="Sign up"
+        leadingText={strings.noAccount}
+        trailingTest={strings.signupOption}
         onPress={() => {
           navigation.navigate("Register" as never);
         }}
