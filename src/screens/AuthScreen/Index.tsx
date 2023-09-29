@@ -11,14 +11,14 @@ import SocialButton from "../../components/SocialButton";
 import Separator from "../../components/Separator/Separator";
 import colors from "../../themes/colors";
 import { useNavigation } from "@react-navigation/native";
+import BackButton from "../../components/BackButton";
+import FooterText from "../../components/FooterText";
 
 const Index = () => {
   const navigation = useNavigation();
   return (
     <View style={styles.container}>
-      <TouchableOpacity onPress={() => navigation.goBack()}>
-        <Image source={require("../../../assets/images/icon-back.png")} />
-      </TouchableOpacity>
+      <BackButton />
       <View style={styles.contentContainer}>
         <Text style={styles.title}>Let's you in</Text>
 
@@ -47,12 +47,13 @@ const Index = () => {
         </View>
       </View>
 
-      <View style={styles.footer}>
-        <Text>Don't have an account?</Text>
-        <TouchableOpacity>
-          <Text style={styles.footerBtn}>Signup</Text>
-        </TouchableOpacity>
-      </View>
+      <FooterText
+        leadingText="Don't have an account?"
+        trailingTest="Sign up"
+        onPress={() => {
+          navigation.navigate("Register");
+        }}
+      />
 
       <View style={{ marginBottom: 53 }} />
     </View>
@@ -87,18 +88,6 @@ const styles = StyleSheet.create({
     fontSize: 36,
     fontWeight: "700",
     textAlign: "center",
-  },
-
-  footer: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    gap: 10,
-  },
-  footerBtn: {
-    color: colors.primary,
-    fontWeight: "700",
-    // marginLeft: 14,
   },
 });
 

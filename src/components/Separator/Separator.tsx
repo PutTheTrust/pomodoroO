@@ -21,6 +21,7 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
     alignItems: "center",
+    gap: 10,
   },
   line: {
     flex: 1,
@@ -29,7 +30,7 @@ const styles = StyleSheet.create({
   },
 
   text: {
-    width: 50,
+    // width: 50,
     textAlign: "center",
     fontWeight: "700",
   },

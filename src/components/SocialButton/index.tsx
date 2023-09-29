@@ -16,7 +16,10 @@ interface SocialButtonProps {
 
 const index = ({ text, image, isSmall }: SocialButtonProps) => {
   return (
-    <TouchableOpacity style={styles.container} onPress={() => {}}>
+    <TouchableOpacity
+      style={[styles.container, { width: isSmall ? 88 : "auto" }]}
+      onPress={() => {}}
+    >
       <Image source={image} />
       {!isSmall ? <Text style={styles.text}>Continue with {text}</Text> : null}
     </TouchableOpacity>
@@ -31,7 +34,7 @@ const styles = StyleSheet.create({
     height: 56,
     borderRadius: 15,
     borderColor: colors.gray,
-    borderWidth: 2,
+    borderWidth: 3,
     gap: 12,
   },
   text: {
