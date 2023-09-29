@@ -1,4 +1,11 @@
-import { View, Text, StyleSheet, TextInput, Image } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  TextInput,
+  Image,
+  ScrollView,
+} from "react-native";
 import BackButton from "../../components/BackButton";
 import CustomButton from "../../components/CustomButton";
 import Separator from "../../components/Separator/Separator";
@@ -22,7 +29,7 @@ const Index = () => {
   return (
     <View style={styles.container}>
       <BackButton />
-      <Text style={styles.title}>Create your Account</Text>
+      <Text style={styles.title}>Login to your Account</Text>
 
       <View style={styles.inputContainer}>
         <CustomInput
@@ -40,7 +47,7 @@ const Index = () => {
         />
       </View>
 
-      <CustomButton title="Sign up" onClick={() => {}} />
+      <CustomButton title="Sign in" onClick={() => {}} />
       <Separator text="or continue with" />
 
       <View style={styles.socialContainer}>
@@ -50,10 +57,10 @@ const Index = () => {
       </View>
 
       <FooterText
-        leadingText="Already have an account?"
-        trailingTest="Sign in"
+        leadingText="Don't have an account?"
+        trailingTest="Sign up"
         onPress={() => {
-          navigation.navigate("Login" as never);
+          navigation.navigate("Register" as never);
         }}
       />
     </View>

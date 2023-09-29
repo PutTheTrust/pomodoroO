@@ -43,7 +43,12 @@ const Index = () => {
         <Separator text="or" />
 
         <View>
-          <CustomButton title="Sign in with password" onClick={() => {}} />
+          <CustomButton
+            title="Sign in with password"
+            onClick={() => {
+              navigation.navigate("Login" as never);
+            }}
+          />
         </View>
       </View>
 
@@ -51,7 +56,7 @@ const Index = () => {
         leadingText="Don't have an account?"
         trailingTest="Sign up"
         onPress={() => {
-          navigation.navigate("Register");
+          navigation.navigate("Register" as never);
         }}
       />
 

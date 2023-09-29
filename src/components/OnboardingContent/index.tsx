@@ -39,7 +39,7 @@ function index() {
         <CustomButton
           title="Get Started"
           onClick={() => {
-            navigation.navigate("Auth");
+            navigation.navigate("Auth" as never);
           }}
         />
       </View>
