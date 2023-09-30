@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, TextInput, Image } from "react-native";
+import { View, Text, StyleSheet, TextInput, Image, Modal } from "react-native";
 import BackButton from "../../components/BackButton";
 import CustomButton from "../../components/CustomButton";
 import Separator from "../../components/Separator/Separator";
@@ -15,11 +15,41 @@ import EmailIcon from "../../../assets/images/icon-mail.png";
 import LockIcon from "../../../assets/images/icon-lock.png";
 import { useNavigation } from "@react-navigation/native";
 import strings from "../../constants/strings";
+// import { register } from "../../utils/auth";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+
+import { auth } from "../../../firebase.config";
 
 const Index = () => {
   const navigation = useNavigation();
   const [email, onChangeEmail] = useState("");
   const [password, onChangePassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
+  const signup = async (email: string, password: string) => {
+    if (!email || !password) {
+      alert("Please populate all fields");
+      return;
+    }
+
+    setIsLoading(true);
+    await createUserWithEmailAndPassword(auth, email, password)
+      .then(() => {
+        // Signed up
+        // const user = userCredential.user;
+        alert("Registration successfull");
+        navigation.navigate("Home" as never);
+        // ...
+      })
+      .catch((error) => {
+        // const errorCode = error.code;
+        const errorMessage = error.message;
+        // ..
+        alert(errorMessage);
+      });
+    setIsLoading(false);
+  };
+
   return (
     <View style={styles.container}>
       <BackButton />
@@ -41,7 +71,12 @@ const Index = () => {
         />
       </View>
 
-      <CustomButton title="Sign up" onClick={() => {}} />
+      <CustomButton
+        title={isLoading ? "Loading..." : "Sign up"}
+        onClick={() => {
+          signup(email, password);
+        }}
+      />
       <Separator text="or continue with" />
 
       <View style={styles.socialContainer}>

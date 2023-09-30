@@ -22,11 +22,37 @@ import EmailIcon from "../../../assets/images/icon-mail.png";
 import LockIcon from "../../../assets/images/icon-lock.png";
 import { useNavigation } from "@react-navigation/native";
 import strings from "../../constants/strings";
+import { signInWithEmailAndPassword } from "firebase/auth";
+
+import { auth } from "../../../firebase.config";
 
 const Index = () => {
   const navigation = useNavigation();
   const [email, onChangeEmail] = useState("");
   const [password, onChangePassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
+  const signin = async () => {
+    if (!email || !password) {
+      alert("Please populate all fields");
+      return;
+    }
+
+    signInWithEmailAndPassword(auth, email, password)
+      .then(() => {
+        // Signed in
+        // const user = userCredential.user;
+        alert("Succesfully logged in");
+        navigation.navigate("Home" as never);
+        // ...
+      })
+      .catch((error) => {
+        // const errorCode = error.code;
+        const errorMessage = error.message;
+        alert(errorMessage);
+      });
+    setIsLoading(false);
+  };
   return (
     <View style={styles.container}>
       <BackButton />
@@ -48,7 +74,7 @@ const Index = () => {
         />
       </View>
 
-      <CustomButton title="Sign in" onClick={() => {}} />
+      <CustomButton title="Sign in" onClick={() => signin()} />
       <Separator text="or continue with" />
 
       <View style={styles.socialContainer}>
