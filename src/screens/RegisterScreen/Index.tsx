@@ -78,6 +78,7 @@ const Index = () => {
             email={name}
             placeholder="Name"
             icon={LockIcon}
+            isPassword={false}
           />
 
           <CustomInput
@@ -85,6 +86,7 @@ const Index = () => {
             email={lastName}
             placeholder="Lastname"
             icon={LockIcon}
+            isPassword={false}
           />
 
           <CustomInput
@@ -92,6 +94,7 @@ const Index = () => {
             email={email}
             placeholder="Email"
             icon={EmailIcon}
+            isPassword={false}
           />
 
           <CustomInput
@@ -99,6 +102,7 @@ const Index = () => {
             email={password}
             placeholder="Password"
             icon={LockIcon}
+            isPassword={true}
           />
         </ScrollView>
       </View>

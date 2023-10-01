@@ -6,6 +6,7 @@ interface ICustomInputProps {
   email: string;
   placeholder: string;
   icon: ImageProps;
+  isPassword: boolean;
 }
 
 const index = ({
@@ -13,6 +14,7 @@ const index = ({
   email,
   placeholder,
   icon,
+  isPassword,
 }: ICustomInputProps) => {
   return (
     <View style={styles.inputContainer}>
@@ -22,7 +24,8 @@ const index = ({
         onChangeText={onChangeEmail}
         value={email}
         placeholder={placeholder}
-        inputMode="email"
+        keyboardType="default"
+        secureTextEntry={isPassword}
       />
     </View>
   );
