@@ -5,7 +5,6 @@ import {
   StyleSheet,
   TouchableOpacity,
   ActivityIndicator,
-  ScrollView,
   FlatList,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -33,8 +32,8 @@ const Index = () => {
     // };
     // getName();
     // console.log(firstName);
+    console.log(tasks[0].title);
   }, [firstName]);
-
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.headerContainer}>
@@ -71,31 +70,21 @@ const Index = () => {
           </TouchableOpacity>
         </View>
 
-        {/* <View style={{ flex: 1, backgroundColor: "blue" }}> */}
-        {/* <ScrollView contentContainerStyle={{ gap: 16 }}>
-          <TaskItem icon={book} title="Reading Books" time="50 minutes" />
-          <TaskItem icon={book} title="Reading Books" time="50 minutes" />
-          <TaskItem icon={book} title="Reading Books" time="50 minutes" />
-          <TaskItem icon={book} title="Reading Books" time="50 minutes" />
-          <TaskItem icon={book} title="Reading Books" time="50 minutes" />
-          <TaskItem icon={book} title="Reading Books" time="50 minutes" />
-        </ScrollView> */}
-        <View>
+        <View style={{ height: 300 }}>
           <FlatList
             data={tasks}
             showsHorizontalScrollIndicator={false}
-            keyExtractor={(task) => task.id}
-            contentContainerStyle={{
-              gap: 16,
-            }}
-            renderItem={({ task }: any) => (
-              <TaskItem icon={book} title="Reading Books" time="50 minutes" />
+            keyExtractor={(item) => item.id.toString()}
+            contentContainerStyle={{ gap: 16 }}
+            // style={{
+            //   paddingBottom: 160,
+            // }}
+            renderItem={({ item }) => (
+              <TaskItem icon={book} title={item.title} time={item.time} />
             )}
           />
+          {/* <View style={{ paddingTop: 320 }} /> */}
         </View>
-
-        {/* <Text>Hell</Text>
-        </View> */}
       </View>
     </SafeAreaView>
   );

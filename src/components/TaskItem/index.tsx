@@ -19,13 +19,22 @@ interface TaskItemProps {
 const index = ({ icon, title, time }: TaskItemProps) => {
   return (
     <View style={styles.taskContainer}>
-      <View style={styles.taskIcon}>
-        <Image source={icon} />
-      </View>
+      <View
+        style={{
+          flex: 1,
+          flexDirection: "row",
+          alignItems: "center",
+          gap: 12,
+        }}
+      >
+        <View style={styles.taskIcon}>
+          <Image source={icon} />
+        </View>
 
-      <View>
-        <Text style={styles.taskTitle}>{title}</Text>
-        <Text style={styles.taskTime}>{time}</Text>
+        <View>
+          <Text style={styles.taskTitle}>{title}</Text>
+          <Text style={styles.taskTime}>{time}</Text>
+        </View>
       </View>
 
       <TouchableOpacity style={styles.play}>
