@@ -11,40 +11,36 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { useEffect, useState } from "react";
 import getUsername from "../../actions/getUsername";
 import colors from "../../themes/colors";
+import AppBar from "../../components/AppBar";
 
-import logo from "../../../assets/images/small-logo.png";
 import bell from "../../../assets/images/icon-bell.png";
 import book from "../../../assets/images/icon-book.png";
 import TaskItem from "../../components/TaskItem";
 import tasks from "../../constants/tasks";
+import { useNavigation } from "@react-navigation/native";
 
 const Index = () => {
+  const navigation = useNavigation();
   const [firstName, setFirstName] = useState("Christina");
   useEffect(() => {
-    // const getName = async () => {
-    //   await getUsername()
-    //     .then((res) => {
-    //       setFirstName(res!);
-    //     })
-    //     .catch((err) => {
-    //       console.log(err);
-    //     });
-    // };
-    // getName();
-    // console.log(firstName);
-    console.log(tasks[0].title);
+    const getName = async () => {
+      await getUsername()
+        .then((res) => {
+          if (!res) navigation.navigate("Login" as never);
+          setFirstName(res!);
+        })
+        .catch((err) => {
+          console.log(err);
+          navigation.navigate("Login" as never);
+        });
+    };
+    getName();
+    console.log(firstName);
+    // console.log(tasks[0].title);
   }, [firstName]);
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.headerContainer}>
-        <View style={{ flexDirection: "row", alignItems: "center", gap: 17 }}>
-          <Image style={styles.logo} source={logo} />
-          <Text style={styles.logoText}>Pomo</Text>
-        </View>
-        <TouchableOpacity>
-          <Image style={styles.image} source={bell} />
-        </TouchableOpacity>
-      </View>
+      <AppBar text="Pomo" image={bell} />
 
       {firstName ? (
         <Text style={styles.greetingText}>Morning, {firstName} 👋</Text>

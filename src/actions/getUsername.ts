@@ -5,7 +5,7 @@ const getUsername = async () => {
   const user = await auth.currentUser;
   if (user) {
     try {
-      const docRef = doc(db, "users", user?.email!);
+      const docRef = doc(db, "users", user.email!);
       const docSnapshot = await getDoc(docRef);
 
       if (docSnapshot.exists()) {
@@ -22,7 +22,7 @@ const getUsername = async () => {
     }
     console.log(user);
   } else {
-    console.log("ERROR");
+    console.log("NO USER");
   }
 };
 
