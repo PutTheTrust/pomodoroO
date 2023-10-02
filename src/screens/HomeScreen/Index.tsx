@@ -5,47 +5,42 @@ import {
   StyleSheet,
   TouchableOpacity,
   ActivityIndicator,
-  ScrollView,
   FlatList,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useEffect, useState } from "react";
 import getUsername from "../../actions/getUsername";
 import colors from "../../themes/colors";
+import AppBar from "../../components/AppBar";
 
-import logo from "../../../assets/images/small-logo.png";
 import bell from "../../../assets/images/icon-bell.png";
 import book from "../../../assets/images/icon-book.png";
 import TaskItem from "../../components/TaskItem";
 import tasks from "../../constants/tasks";
+import { useNavigation } from "@react-navigation/native";
 
 const Index = () => {
+  const navigation = useNavigation();
   const [firstName, setFirstName] = useState("Christina");
   useEffect(() => {
-    // const getName = async () => {
-    //   await getUsername()
-    //     .then((res) => {
-    //       setFirstName(res!);
-    //     })
-    //     .catch((err) => {
-    //       console.log(err);
-    //     });
-    // };
-    // getName();
-    // console.log(firstName);
+    const getName = async () => {
+      await getUsername()
+        .then((res) => {
+          if (!res) navigation.navigate("Login" as never);
+          setFirstName(res!);
+        })
+        .catch((err) => {
+          console.log(err);
+          navigation.navigate("Login" as never);
+        });
+    };
+    getName();
+    console.log(firstName);
+    // console.log(tasks[0].title);
   }, [firstName]);
-
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.headerContainer}>
-        <View style={{ flexDirection: "row", alignItems: "center", gap: 17 }}>
-          <Image style={styles.logo} source={logo} />
-          <Text style={styles.logoText}>Pomo</Text>
-        </View>
-        <TouchableOpacity>
-          <Image style={styles.image} source={bell} />
-        </TouchableOpacity>
-      </View>
+      <AppBar text="Pomo" image={bell} />
 
       {firstName ? (
         <Text style={styles.greetingText}>Morning, {firstName} 👋</Text>
@@ -71,31 +66,21 @@ const Index = () => {
           </TouchableOpacity>
         </View>
 
-        {/* <View style={{ flex: 1, backgroundColor: "blue" }}> */}
-        {/* <ScrollView contentContainerStyle={{ gap: 16 }}>
-          <TaskItem icon={book} title="Reading Books" time="50 minutes" />
-          <TaskItem icon={book} title="Reading Books" time="50 minutes" />
-          <TaskItem icon={book} title="Reading Books" time="50 minutes" />
-          <TaskItem icon={book} title="Reading Books" time="50 minutes" />
-          <TaskItem icon={book} title="Reading Books" time="50 minutes" />
-          <TaskItem icon={book} title="Reading Books" time="50 minutes" />
-        </ScrollView> */}
-        <View>
+        <View style={{ height: 300 }}>
           <FlatList
             data={tasks}
             showsHorizontalScrollIndicator={false}
-            keyExtractor={(task) => task.id}
-            contentContainerStyle={{
-              gap: 16,
-            }}
-            renderItem={({ task }: any) => (
-              <TaskItem icon={book} title="Reading Books" time="50 minutes" />
+            keyExtractor={(item) => item.id.toString()}
+            contentContainerStyle={{ gap: 16 }}
+            // style={{
+            //   paddingBottom: 160,
+            // }}
+            renderItem={({ item }) => (
+              <TaskItem icon={book} title={item.title} time={item.time} />
             )}
           />
+          {/* <View style={{ paddingTop: 320 }} /> */}
         </View>
-
-        {/* <Text>Hell</Text>
-        </View> */}
       </View>
     </SafeAreaView>
   );
