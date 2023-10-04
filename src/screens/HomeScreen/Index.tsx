@@ -23,18 +23,18 @@ const Index = () => {
   const navigation = useNavigation();
   const [firstName, setFirstName] = useState("Christina");
   useEffect(() => {
-    const getName = async () => {
-      await getUsername()
-        .then((res) => {
-          if (!res) navigation.navigate("Login" as never);
-          setFirstName(res!);
-        })
-        .catch((err) => {
-          console.log(err);
-          navigation.navigate("Login" as never);
-        });
-    };
-    getName();
+    // const getName = async () => {
+    //   await getUsername()
+    //     .then((res) => {
+    //       if (!res) navigation.navigate("Login" as never);
+    //       setFirstName(res!);
+    //     })
+    //     .catch((err) => {
+    //       console.log(err);
+    //       navigation.navigate("Login" as never);
+    //     });
+    // };
+    // getName();
     console.log(firstName);
     // console.log(tasks[0].title);
   }, [firstName]);
