@@ -2,31 +2,34 @@ import { View, StyleSheet, TextInput, Image, ImageProps } from "react-native";
 import colors from "../../themes/colors";
 
 interface ICustomInputProps {
-  onChangeEmail: React.Dispatch<React.SetStateAction<string>>;
-  email: string;
+  onChangeText: React.Dispatch<React.SetStateAction<string>>;
+  value: string;
   placeholder: string;
-  icon: ImageProps;
+  icon?: ImageProps;
+  rightIcon?: ImageProps;
   isPassword: boolean;
 }
 
 const index = ({
-  onChangeEmail,
-  email,
+  onChangeText,
+  value,
   placeholder,
   icon,
   isPassword,
+  rightIcon,
 }: ICustomInputProps) => {
   return (
     <View style={styles.inputContainer}>
-      <Image source={icon} />
+      {icon && <Image source={icon} />}
       <TextInput
         style={styles.input}
-        onChangeText={onChangeEmail}
-        value={email}
+        onChangeText={onChangeText}
+        value={value}
         placeholder={placeholder}
         keyboardType="default"
         secureTextEntry={isPassword}
       />
+      {rightIcon && <Image source={rightIcon} />}
     </View>
   );
 };

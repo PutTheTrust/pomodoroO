@@ -68,44 +68,41 @@ const Index = () => {
       <BackButton />
       <Text style={styles.title}>Create your Account</Text>
 
-      <View style={{ height: 296 }}>
-        <ScrollView
-          style={styles.inputContainer}
-          contentContainerStyle={{ gap: 24 }}
-        >
-          <CustomInput
-            onChangeEmail={onChangeName}
-            email={name}
-            placeholder="Name"
-            icon={LockIcon}
-            isPassword={false}
-          />
+      {/* <View style={{ height: 296 }}> */}
+      <ScrollView contentContainerStyle={{ gap: 24 }}>
+        <CustomInput
+          onChangeText={onChangeName}
+          value={name}
+          placeholder="Name"
+          icon={LockIcon}
+          isPassword={false}
+        />
 
-          <CustomInput
-            onChangeEmail={onChangeLastName}
-            email={lastName}
-            placeholder="Lastname"
-            icon={LockIcon}
-            isPassword={false}
-          />
+        <CustomInput
+          onChangeText={onChangeLastName}
+          value={lastName}
+          placeholder="Lastname"
+          icon={LockIcon}
+          isPassword={false}
+        />
 
-          <CustomInput
-            onChangeEmail={onChangeEmail}
-            email={email}
-            placeholder="Email"
-            icon={EmailIcon}
-            isPassword={false}
-          />
+        <CustomInput
+          onChangeText={onChangeEmail}
+          value={email}
+          placeholder="Email"
+          icon={EmailIcon}
+          isPassword={false}
+        />
 
-          <CustomInput
-            onChangeEmail={onChangePassword}
-            email={password}
-            placeholder="Password"
-            icon={LockIcon}
-            isPassword={true}
-          />
-        </ScrollView>
-      </View>
+        <CustomInput
+          onChangeText={onChangePassword}
+          value={password}
+          placeholder="Password"
+          icon={LockIcon}
+          isPassword={true}
+        />
+      </ScrollView>
+      {/* </View> */}
 
       <CustomButton
         title={isLoading ? "Loading..." : "Sign up"}

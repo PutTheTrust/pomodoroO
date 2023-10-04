@@ -1,16 +1,24 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
-import { HomeScreen, ProfileScreen, StatisticsScreen, TaskScreen } from "..";
+import {
+  CreateTaskScreen,
+  HomeScreen,
+  ProfileScreen,
+  StatisticsScreen,
+  TaskScreen,
+} from "..";
 import { AntDesign } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
+import { Foundation } from "@expo/vector-icons";
+import colors from "../../themes/colors";
 
 const Tab = createBottomTabNavigator();
 const Index = () => {
   return (
-    // <NavigationContainer>
     <Tab.Navigator
       screenOptions={{
         headerShown: false,
+        tabBarActiveTintColor: colors.primary,
       }}
     >
       <Tab.Screen
@@ -18,7 +26,7 @@ const Index = () => {
         component={HomeScreen}
         options={{
           tabBarIcon: ({ color, size }) => (
-            <AntDesign name="home" size={24} color="black" />
+            <Foundation name="home" size={24} color={color} />
           ),
         }}
       />
@@ -27,17 +35,26 @@ const Index = () => {
         component={TaskScreen}
         options={{
           tabBarIcon: ({ color, size }) => (
-            <AntDesign name="calendar" size={24} color="black" />
+            <AntDesign name="calendar" size={24} color={color} />
+          ),
+          tabBarActiveTintColor: colors.primary,
+        }}
+      />
+      <Tab.Screen
+        name="CreateTask"
+        component={CreateTaskScreen}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <AntDesign name="plus" size={24} color={color} />
           ),
         }}
       />
-      {/* <Tab.Screen name="Home" component={HomeScreen} /> */}
       <Tab.Screen
         name="Statistics"
         component={StatisticsScreen}
         options={{
           tabBarIcon: ({ color, size }) => (
-            <AntDesign name="barschart" size={24} color="black" />
+            <AntDesign name="barschart" size={24} color={color} />
           ),
         }}
       />
@@ -46,12 +63,11 @@ const Index = () => {
         component={ProfileScreen}
         options={{
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="ios-person-outline" size={24} color="black" />
+            <Ionicons name="ios-person" size={24} color={color} />
           ),
         }}
       />
     </Tab.Navigator>
-    // </NavigationContainer>
   );
 };
 

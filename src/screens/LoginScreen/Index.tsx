@@ -60,16 +60,16 @@ const Index = () => {
 
       <View style={styles.inputContainer}>
         <CustomInput
-          onChangeEmail={onChangeEmail}
-          email={email}
+          onChangeText={onChangeEmail}
+          value={email}
           placeholder="Email"
           icon={EmailIcon}
           isPassword={false}
         />
 
         <CustomInput
-          onChangeEmail={onChangePassword}
-          email={password}
+          onChangeText={onChangePassword}
+          value={password}
           placeholder="Password"
           icon={LockIcon}
           isPassword={true}
