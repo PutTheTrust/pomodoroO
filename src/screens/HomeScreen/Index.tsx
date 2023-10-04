@@ -61,7 +61,9 @@ const Index = () => {
         >
           <Text style={styles.todayText}>Today Tasks (16)</Text>
 
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => navigation.navigate("Tasks" as never)}
+          >
             <Text style={styles.seeAll}>See All</Text>
           </TouchableOpacity>
         </View>

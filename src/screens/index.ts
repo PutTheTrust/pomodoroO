@@ -7,6 +7,7 @@ import StatisticsScreen from "./StatisticsScreen/Index";
 import ProfileScreen from "./ProfileScreen/Index";
 import TaskScreen from "./TaskScreen/Index";
 import LoadingScreen from "./LoadingScreen/Index";
+import AllTaskScreen from "./AllTaskScreen/Index";
 
 export {
   AuthScreen,
@@ -18,4 +19,5 @@ export {
   ProfileScreen,
   TaskScreen,
   LoadingScreen,
+  AllTaskScreen,
 };

@@ -8,17 +8,19 @@ import {
 } from "react-native";
 
 import logo from "../../../assets/images/small-logo.png";
+import BackButton from "../BackButton";
 
 interface AppBarProps {
   text: string;
   image: ImageProps;
+  isBack?: boolean;
 }
 
-const index = ({ text, image }: AppBarProps) => {
+const index = ({ text, image, isBack }: AppBarProps) => {
   return (
     <View style={styles.headerContainer}>
       <View style={styles.leftContainer}>
-        <Image style={styles.logo} source={logo} />
+        {isBack ? <BackButton /> : <Image style={styles.logo} source={logo} />}
         <Text style={styles.logoText}>{text}</Text>
       </View>
       <TouchableOpacity>

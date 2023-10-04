@@ -49,6 +49,26 @@ const tasks = [
     shortBreaks: 3,
     time: "50 minutes",
   },
+  {
+    id: "5",
+    title: "Tech Exploration 2",
+    Date: "2023/10/01",
+    category: "Technology",
+    sessions: 4,
+    longBreaks: 2,
+    shortBreaks: 3,
+    time: "50 minutes",
+  },
+  {
+    id: "6",
+    title: "Tech Exploration 3",
+    Date: "2023/10/01",
+    category: "Technology",
+    sessions: 4,
+    longBreaks: 2,
+    shortBreaks: 3,
+    time: "50 minutes",
+  },
 ];
 
 export default tasks;
