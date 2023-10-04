@@ -23,18 +23,18 @@ const Index = () => {
   const navigation = useNavigation();
   const [firstName, setFirstName] = useState("Christina");
   useEffect(() => {
-    const getName = async () => {
-      await getUsername()
-        .then((res) => {
-          if (!res) navigation.navigate("Login" as never);
-          setFirstName(res!);
-        })
-        .catch((err) => {
-          console.log(err);
-          navigation.navigate("Login" as never);
-        });
-    };
-    getName();
+    // const getName = async () => {
+    //   await getUsername()
+    //     .then((res) => {
+    //       if (!res) navigation.navigate("Login" as never);
+    //       setFirstName(res!);
+    //     })
+    //     .catch((err) => {
+    //       console.log(err);
+    //       navigation.navigate("Login" as never);
+    //     });
+    // };
+    // getName();
     console.log(firstName);
     // console.log(tasks[0].title);
   }, [firstName]);
@@ -61,7 +61,9 @@ const Index = () => {
         >
           <Text style={styles.todayText}>Today Tasks (16)</Text>
 
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => navigation.navigate("Tasks" as never)}
+          >
             <Text style={styles.seeAll}>See All</Text>
           </TouchableOpacity>
         </View>

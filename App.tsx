@@ -3,7 +3,8 @@ import {
   AuthScreen,
   RegisterScreen,
   LoginScreen,
-  HomeScreen,
+  LoadingScreen,
+  AllTaskScreen,
 } from "./src/screens";
 import MainTabs from "./src/screens/MainTabs/Index";
 import { NavigationContainer } from "@react-navigation/native";
@@ -15,7 +16,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="Home"
+        initialRouteName="Loading"
         screenOptions={{
           headerShown: false,
         }}
@@ -25,6 +26,8 @@ export default function App() {
         <Stack.Screen name="Auth" component={AuthScreen} />
         <Stack.Screen name="Register" component={RegisterScreen} />
         <Stack.Screen name="Login" component={LoginScreen} />
+        <Stack.Screen name="Loading" component={LoadingScreen} />
+        <Stack.Screen name="Tasks" component={AllTaskScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
