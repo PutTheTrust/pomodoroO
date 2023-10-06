@@ -5,13 +5,17 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import technology from "../../../assets/images/icon-book.png";
 import colors from "../../themes/colors";
 import { CountdownCircleTimer } from "react-native-countdown-circle-timer";
+import { Ionicons } from "@expo/vector-icons";
+import ControlButton from "../../components/ControlButton";
+import { useState } from "react";
 
 const Index = () => {
+  const [isPlaying, setIsPlaying] = useState(false);
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.top}>
         <BackButton />
-        <Text style={styles.topText}>Create New Task</Text>
+        <Text style={styles.topText}>Pomodoro Timer</Text>
       </View>
 
       <View style={styles.infoContainer}>
@@ -32,15 +36,16 @@ const Index = () => {
 
       <View style={styles.timerContainer}>
         <CountdownCircleTimer
-          isPlaying
+          isPlaying={isPlaying}
           duration={1500}
           colors={["#004777", "#F7B801", "#A30000", "#A30000"]}
           colorsTime={[7, 5, 2, 0]}
+          size={300}
         >
           {({ remainingTime }) => (
             <View style={{ alignItems: "center" }}>
               <Text style={styles.timerText}>
-                {Math.round(remainingTime / 60)} :{" "}
+                {Math.floor(remainingTime / 60)} :{" "}
                 {Math.round(remainingTime % 60)}
               </Text>
 
@@ -49,6 +54,31 @@ const Index = () => {
           )}
         </CountdownCircleTimer>
       </View>
+
+      <Text style={{ textAlign: "center" }}>Stay Focused for 25 minutes</Text>
+
+      <View style={styles.controlls}>
+        <ControlButton onPress={() => {}}>
+          <Ionicons name="refresh-outline" size={24} color="gray" />
+        </ControlButton>
+
+        <ControlButton
+          isPlay
+          onPress={() => {
+            setIsPlaying(!isPlaying);
+          }}
+        >
+          <Ionicons
+            name={isPlaying ? "pause" : "play"}
+            size={24}
+            color="white"
+          />
+        </ControlButton>
+
+        <ControlButton onPress={() => {}}>
+          <Ionicons name="stop" size={24} color="gray" />
+        </ControlButton>
+      </View>
     </SafeAreaView>
   );
 };
@@ -56,8 +86,9 @@ const Index = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginHorizontal: 24,
-    // justifyContent: "space-between",
+    paddingHorizontal: 24,
+    justifyContent: "space-between",
+    // backgroundColor: "#ebebeb",
   },
   top: {
     flexDirection: "row",
@@ -105,6 +136,12 @@ const styles = StyleSheet.create({
   timerText: {
     fontSize: 28,
     fontWeight: "700",
+  },
+  controlls: {
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    gap: 20,
   },
 });
 export default Index;
