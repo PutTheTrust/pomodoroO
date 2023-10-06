@@ -9,6 +9,7 @@ import TaskScreen from "./TaskScreen/Index";
 import LoadingScreen from "./LoadingScreen/Index";
 import AllTaskScreen from "./AllTaskScreen/Index";
 import CreateTaskScreen from "./CreateTaskScreen/Index";
+import TimerScreen from "./TimerScreen/Index";
 
 export {
   AuthScreen,
@@ -22,4 +23,5 @@ export {
   LoadingScreen,
   AllTaskScreen,
   CreateTaskScreen,
+  TimerScreen,
 };

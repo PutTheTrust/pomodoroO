@@ -5,6 +5,7 @@ import {
   LoginScreen,
   LoadingScreen,
   AllTaskScreen,
+  TimerScreen,
 } from "./src/screens";
 import MainTabs from "./src/screens/MainTabs/Index";
 import { NavigationContainer } from "@react-navigation/native";
@@ -28,6 +29,7 @@ export default function App() {
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Loading" component={LoadingScreen} />
         <Stack.Screen name="Tasks" component={AllTaskScreen} />
+        <Stack.Screen name="Timer" component={TimerScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

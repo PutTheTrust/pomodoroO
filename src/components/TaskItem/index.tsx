@@ -9,6 +9,7 @@ import {
 
 import colors from "../../themes/colors";
 import play from "../../../assets/images/icon-play.png";
+import { useNavigation } from "@react-navigation/native";
 
 interface TaskItemProps {
   icon: ImageProps;
@@ -17,6 +18,7 @@ interface TaskItemProps {
 }
 
 const index = ({ icon, title, time }: TaskItemProps) => {
+  const navigation = useNavigation();
   return (
     <View style={styles.taskContainer}>
       <View
@@ -37,7 +39,10 @@ const index = ({ icon, title, time }: TaskItemProps) => {
         </View>
       </View>
 
-      <TouchableOpacity style={styles.play}>
+      <TouchableOpacity
+        style={styles.play}
+        onPress={() => navigation.navigate("Timer" as never)}
+      >
         <Image source={play} />
       </TouchableOpacity>
     </View>
