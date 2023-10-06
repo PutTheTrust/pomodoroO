@@ -20,7 +20,7 @@ const index = ({
 }: ICustomInputProps) => {
   return (
     <View style={styles.inputContainer}>
-      {icon && <Image source={icon} />}
+      {icon && <Image style={styles.icon} source={icon} />}
       <TextInput
         style={styles.input}
         onChangeText={onChangeText}
@@ -29,7 +29,7 @@ const index = ({
         keyboardType="default"
         secureTextEntry={isPassword}
       />
-      {rightIcon && <Image source={rightIcon} />}
+      {rightIcon && <Image style={styles.icon} source={rightIcon} />}
     </View>
   );
 };
@@ -38,16 +38,22 @@ const styles = StyleSheet.create({
   inputContainer: {
     flexDirection: "row",
     alignItems: "center",
+    // justifyContent: "space-between",
     gap: 14,
     backgroundColor: colors.gray,
+    // backgroundColor: colors.primary,
     height: 60,
     borderRadius: 15,
     paddingHorizontal: 22,
   },
   input: {
     // backgroundColor: "green",
-    width: "90%",
+    // width: "70%",
     height: "auto",
+  },
+  icon: {
+    width: 18,
+    height: 18,
   },
 });
 
